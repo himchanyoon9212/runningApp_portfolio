@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">runningApp</string>
+    <string name="splash_text">RunningApp</string>
+    <string name="join_btn">회원가입하기</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="email">email</string>
+    <string name="password">password</string>
+</resources>
