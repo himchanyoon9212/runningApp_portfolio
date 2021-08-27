@@ -21,7 +21,10 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
         // 예외처리 해줘야함 response code를 받아와야함
         viewModelScope.launch {
             val response = repository.getWeatherData(city,token)
-            weatherResponse.value = response
+            if(response.code() == 200) {
+                weatherResponse.value = response
+            }
+
         }
 
 

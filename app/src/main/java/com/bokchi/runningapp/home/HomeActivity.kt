@@ -33,17 +33,8 @@ class HomeActivity : AppCompatActivity() {
         homeViewModel.getWeatherData("seoul", weatherApiKey)
         homeViewModel.weatherResponse.observe(this, Observer {
 
-            val responseCode = it.code()
-            if(responseCode == 200) {
+            binding.currentWeatherArea.text = it.body()?.weather?.get(0)?.main.toString()
 
-                val weather = it.body()?.weather?.get(0)?.main.toString()
-                binding.currentWeatherArea.text = weather
-
-            } else {
-
-                Toast.makeText(this, "get weather error", Toast.LENGTH_SHORT).show()
-
-            }
 
         })
 
