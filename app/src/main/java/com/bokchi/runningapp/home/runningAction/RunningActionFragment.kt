@@ -13,6 +13,10 @@ import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.FragmentRunningActionBinding
 import com.bokchi.runningapp.home.HomeActivity
 import com.bokchi.runningapp.home.HomeViewModel
+import com.bokchi.runningapp.home.dialog.TimerDialogFragment
+import com.bokchi.runningapp.utils.Constants.Companion.TIMER_RUN
+import com.bokchi.runningapp.utils.Constants.Companion.TIMER_STOP
+import com.bokchi.runningapp.utils.Constants.Companion.TIMER_TEMP_STOP
 
 
 class RunningActionFragment : Fragment() {
@@ -21,6 +25,10 @@ class RunningActionFragment : Fragment() {
 
     private lateinit var binding : FragmentRunningActionBinding
     private lateinit var homeViewModel : HomeViewModel
+
+    private lateinit var timeDialog : TimerDialogFragment
+
+    private lateinit var dialogArgs : Bundle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,17 +44,19 @@ class RunningActionFragment : Fragment() {
 
         homeViewModel = ViewModelProvider(activity as HomeActivity)[HomeViewModel::class.java]
 
-
         binding.startBtn.setOnClickListener {
-            homeViewModel.startTimer()
+//            homeViewModel.startTimer()
+            dialog(TIMER_RUN)
         }
 
         binding.tempStopBtn.setOnClickListener {
-            homeViewModel.tempStropTimer()
+//            homeViewModel.tempStropTimer()
+            dialog(TIMER_TEMP_STOP)
         }
 
         binding.stopBtn.setOnClickListener {
-            homeViewModel.stopTimer()
+//            homeViewModel.stopTimer()
+            dialog(TIMER_STOP)
         }
 
         homeViewModel.timeCounter.observe(viewLifecycleOwner, Observer {
@@ -60,6 +70,18 @@ class RunningActionFragment : Fragment() {
     override fun onPause() {
         super.onPause()
         // 기록 남겨주기
+
+    }
+
+    private fun dialog(category : Int){
+
+        dialogArgs = Bundle().apply {
+            putInt("TIMER_TYPE", category)
+        }
+
+        timeDialog = TimerDialogFragment()
+        timeDialog.arguments = dialogArgs
+        timeDialog.show((activity as HomeActivity).supportFragmentManager, "")
 
     }
 

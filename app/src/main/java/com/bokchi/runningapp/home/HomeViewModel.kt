@@ -53,8 +53,6 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
             }
         }
 
-
-        // 나중에 시작할 때
     }
 
     fun tempStropTimer(){

@@ -8,6 +8,11 @@ class Constants {
         const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
         lateinit var uid : String
 
+        const val TIMER_RUN = 1
+        const val TIMER_TEMP_STOP = 2
+        const val TIMER_STOP = 3
+
+
     }
 
 
