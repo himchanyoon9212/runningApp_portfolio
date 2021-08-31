@@ -9,6 +9,7 @@ import com.bokchi.runningapp.network.repository.Repository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class HomeViewModel(private val repository: Repository) : ViewModel(){
@@ -19,6 +20,8 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
     var timeCounter :MutableLiveData<Int> = MutableLiveData()
 
     lateinit var timerRoutine : Job
+
+    var timerCoroutineFlag = true
 
     init {
         timeCounter.value = 0
@@ -35,7 +38,7 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
 
     }
 
-    fun startTimer() {
+    fun startTimer() : String{
 
         var startNumber = 0
 
@@ -43,15 +46,24 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
             startNumber = timeCounter.value!!
         }
 
-        // 처음 시작할 때
-        timerRoutine = viewModelScope.launch {
+        if(timerCoroutineFlag) {
 
-            while (true) {
-                startNumber += 1
-                timeCounter.value = startNumber
-                delay(1000L)
+            timerRoutine = viewModelScope.launch {
+
+                while (true) {
+                    startNumber += 1
+                    timeCounter.value = startNumber
+                    delay(1000L)
+                }
             }
+
+            timerCoroutineFlag = false
+            return "실행되었습니다."
+
         }
+
+        return "이미 실행되어 있습니다."
+
 
     }
 
@@ -59,6 +71,7 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
 
         if(::timerRoutine.isInitialized) {
             timerRoutine.cancel()
+            timerCoroutineFlag = true
         }
     }
 
@@ -67,6 +80,7 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
         if(::timerRoutine.isInitialized) {
             timerRoutine.cancel()
             timeCounter.value = 0
+            timerCoroutineFlag = true
         }
     }
 
