@@ -14,8 +14,6 @@ import com.bokchi.runningapp.utils.Constants.Companion.weatherApiKey
 
 class HomeActivity : AppCompatActivity() {
 
-    private val TAG = HomeActivity::class.java.simpleName
-
     private lateinit var binding : ActivityHomeBinding
     private lateinit var homeViewModel : HomeViewModel
 
@@ -24,11 +22,11 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
 
-
         val repository = Repository()
-        val hoemViewModelFactory = HomeViewModelFactory(repository)
-        homeViewModel = ViewModelProvider(this, hoemViewModelFactory).get(HomeViewModel::class.java)
+        val homeViewModelFactory = HomeViewModelFactory(repository)
+        homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
         binding.homeViewModel = homeViewModel
+
 
         homeViewModel.getWeatherData("seoul", weatherApiKey)
         homeViewModel.weatherResponse.observe(this, Observer {
@@ -37,6 +35,14 @@ class HomeActivity : AppCompatActivity() {
 
 
         })
+
+
+
+
+
+
+
+
 
 
 

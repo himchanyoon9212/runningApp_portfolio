@@ -12,4 +12,8 @@ class Repository {
         return RetrofitInstance.api.getWeatherData(a, b)
     }
 
+    fun test(){
+
+    }
+
 }

@@ -1,4 +1,4 @@
-package com.bokchi.runningapp.home.runningLog
+package com.bokchi.runningapp.home.runningGithub
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import com.bokchi.runningapp.R
 
-class RunningLogFragment : Fragment() {
+
+class RunningGithubFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
     }
 
@@ -23,14 +20,12 @@ class RunningLogFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_running_log, container, false)
-
-        return view
+        return inflater.inflate(R.layout.fragment_running_github, container, false)
     }
+
 
     override fun onPause() {
         super.onPause()
-
     }
 
 

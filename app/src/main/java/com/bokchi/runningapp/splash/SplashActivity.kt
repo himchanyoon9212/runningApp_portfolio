@@ -17,6 +17,7 @@ import com.bokchi.runningapp.R
 import com.bokchi.runningapp.auth.IntroActivity
 import com.bokchi.runningapp.home.HomeActivity
 import com.bokchi.runningapp.utils.Constants
+import timber.log.Timber
 
 class SplashActivity : AppCompatActivity() {
 
@@ -52,10 +53,8 @@ class SplashActivity : AppCompatActivity() {
             val intent : Intent
 
             if(uidNumber == isUidNull) {
-
                 intent = Intent(this, IntroActivity::class.java)
             } else {
-
                 intent = Intent(this, HomeActivity::class.java)
             }
 

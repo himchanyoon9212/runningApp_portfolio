@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -12,9 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.ActivityIntroBinding
 import com.bokchi.runningapp.home.HomeActivity
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
+
 
 class IntroActivity : AppCompatActivity() {
 
