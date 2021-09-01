@@ -23,9 +23,13 @@
         </activity>
         <activity android:name=".auth.IntroActivity" />
         <activity android:name=".splash.SplashActivity">
-
-
         </activity>
+
+        <service
+            android:name=".home.foregroundService.TimerService" />
+
+        <service android:name=".MusicPlayerService"/>
+
     </application>
 
 </manifest>

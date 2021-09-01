@@ -45,17 +45,14 @@ class RunningActionFragment : Fragment() {
         homeViewModel = ViewModelProvider(activity as HomeActivity)[HomeViewModel::class.java]
 
         binding.startBtn.setOnClickListener {
-//            homeViewModel.startTimer()
             dialog(TIMER_RUN)
         }
 
         binding.tempStopBtn.setOnClickListener {
-//            homeViewModel.tempStropTimer()
             dialog(TIMER_TEMP_STOP)
         }
 
         binding.stopBtn.setOnClickListener {
-//            homeViewModel.stopTimer()
             dialog(TIMER_STOP)
         }
 
@@ -73,10 +70,10 @@ class RunningActionFragment : Fragment() {
 
     }
 
-    private fun dialog(category : Int){
+    private fun dialog(category : String){
 
         dialogArgs = Bundle().apply {
-            putInt("TIMER_TYPE", category)
+            putString("TIMER_TYPE", category)
         }
 
         timeDialog = TimerDialogFragment()
