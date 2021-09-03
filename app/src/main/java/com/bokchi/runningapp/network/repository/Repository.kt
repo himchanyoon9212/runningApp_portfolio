@@ -7,10 +7,11 @@ import retrofit2.Response
 
 class Repository {
 
-    suspend fun getWeatherData(a : String, b : String) : Response<WeatherList> {
+    suspend fun getWeatherData(query : String, appId : String) : Response<WeatherList> {
 
-        return RetrofitInstance.api.getWeatherData(a, b)
+        return RetrofitInstance.api.getWeatherData(query, appId)
 
     }
+
 
 }

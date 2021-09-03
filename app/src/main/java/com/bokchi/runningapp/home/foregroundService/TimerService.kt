@@ -7,8 +7,6 @@ import androidx.lifecycle.LifecycleService
 import com.bokchi.runningapp.home.dialog.TimerNotification
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_NOTIFICATION_ID
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_RUN
-import com.bokchi.runningapp.utils.Constants.Companion.TIMER_STOP
-import com.bokchi.runningapp.utils.Constants.Companion.TIMER_TEMP_STOP
 
 class TimerService : LifecycleService() {
 
@@ -20,9 +18,6 @@ class TimerService : LifecycleService() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-
-
-        Log.e(TAG, intent?.action.toString())
 
         when(intent?.action){
             TIMER_RUN ->{
