@@ -2,13 +2,13 @@ package com.bokchi.runningapp.db
 
 import javax.inject.Inject
 
-class RoomRepository @Inject constructor(private val appDao: AppDao) {
+class RoomRepository @Inject constructor(private val appDao: RunningAppDao) {
 
-    fun getRecords(): List<UserEntity> {
+    fun getRecords(): List<RunningLogEntity> {
         return appDao.getRecords()
     }
 
-    fun insertRecord(userEntity: UserEntity) {
-        appDao.insertRecord(userEntity)
+    fun insertRecord(runningLogEntity: RunningLogEntity) {
+        appDao.insertRecord(runningLogEntity)
     }
 }

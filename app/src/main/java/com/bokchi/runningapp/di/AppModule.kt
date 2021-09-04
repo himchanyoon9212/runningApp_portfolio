@@ -1,8 +1,8 @@
 package com.bokchi.runningapp.di
 
 import android.app.Application
-import com.bokchi.runningapp.db.AppDao
 import com.bokchi.runningapp.db.AppDatabase
+import com.bokchi.runningapp.db.RunningAppDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,7 +24,7 @@ object APPModule {
 
     @Singleton
     @Provides
-    fun getDao(appDB: AppDatabase): AppDao {
+    fun getDao(appDB: AppDatabase): RunningAppDao {
         return appDB.getDAO()
     }
 }

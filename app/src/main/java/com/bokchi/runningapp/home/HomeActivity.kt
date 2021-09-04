@@ -16,7 +16,9 @@ import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.ActivityHomeBinding
 import com.bokchi.runningapp.network.repository.Repository
 import com.bokchi.runningapp.utils.Constants.Companion.weatherApiKey
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityHomeBinding

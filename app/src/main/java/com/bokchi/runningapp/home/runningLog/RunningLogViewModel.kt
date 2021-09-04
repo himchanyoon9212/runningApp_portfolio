@@ -1,34 +1,40 @@
 package com.bokchi.runningapp.home.runningLog
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bokchi.runningapp.db.RoomRepository
-import com.bokchi.runningapp.db.UserEntity
+import com.bokchi.runningapp.db.RunningLogEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class RunningLogViewModel @Inject constructor(private val repository: RoomRepository): ViewModel() {
 
-    lateinit var userData: MutableLiveData<List<UserEntity>>
+    private val TAG = RunningLogViewModel::class.java.simpleName
+
+    lateinit var userData: MutableLiveData<List<RunningLogEntity>>
 
     init {
         userData = MutableLiveData()
         loadRecords()
     }
 
-    fun getRecordsObserver(): MutableLiveData<List<UserEntity>> {
+    fun getRecordsObserver(): MutableLiveData<List<RunningLogEntity>> {
         return userData
     }
 
     fun loadRecords(){
-        val list = repository.getRecords()
 
+        val list = repository.getRecords()
         userData.postValue(list)
+
+        Log.e(TAG, userData.toString())
     }
 
-    fun insertRecord(userEntity: UserEntity) {
-        repository.insertRecord(userEntity)
+    fun insertRecord(runningLogEntity: RunningLogEntity) {
+        Log.e(TAG, "insertRecode")
+        repository.insertRecord(runningLogEntity)
         loadRecords()
     }
 
