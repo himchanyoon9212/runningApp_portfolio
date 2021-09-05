@@ -30,5 +30,9 @@ class RunningLogViewModel @Inject constructor(private val repository: RoomReposi
         userData.postValue(list)
     }
 
+    fun removeRecords(){
+        repository.removeRecords()
+    }
+
 
 }

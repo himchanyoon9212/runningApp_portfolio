@@ -68,9 +68,8 @@ class TimerDialogFragment : DialogFragment() {
                     homeViewModel.stopTimer()
                     timerForegroundServiceHandler(TIMER_STOP)
 
-
-
                 }
+
             }
 
         }

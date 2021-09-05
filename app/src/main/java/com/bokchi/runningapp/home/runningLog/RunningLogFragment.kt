@@ -44,9 +44,7 @@ class RunningLogFragment : Fragment() {
         runningLogViewModel = ViewModelProvider(activity as HomeActivity).get(RunningLogViewModel::class.java)
 
         binding.btn1.setOnClickListener {
-
-
-
+            runningLogViewModel.removeRecords()
         }
 
         binding.btn2.setOnClickListener {
@@ -54,7 +52,7 @@ class RunningLogFragment : Fragment() {
             runningLogViewModel.getRecordsObserver().observe(viewLifecycleOwner, Observer {
                 for ( i in it) {
                     var count = 1
-                    Log.e(TAG, count.toString())
+                    Log.e(TAG, "count : " + count.toString())
                     count += 1
                     Log.e(TAG, i.log)
                 }

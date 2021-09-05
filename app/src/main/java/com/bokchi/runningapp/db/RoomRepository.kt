@@ -13,7 +13,7 @@ class RoomRepository @Inject constructor(private val appDao: RunningAppDao) {
     }
 
     fun removeRecords(){
-
+        appDao.deleteLogAll()
     }
 
 }
