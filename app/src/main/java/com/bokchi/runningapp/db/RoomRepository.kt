@@ -11,4 +11,9 @@ class RoomRepository @Inject constructor(private val appDao: RunningAppDao) {
     fun insertRecord(runningLogEntity: RunningLogEntity) {
         appDao.insertRecord(runningLogEntity)
     }
+
+    fun removeRecords(){
+
+    }
+
 }

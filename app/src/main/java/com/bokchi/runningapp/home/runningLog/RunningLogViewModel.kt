@@ -28,14 +28,7 @@ class RunningLogViewModel @Inject constructor(private val repository: RoomReposi
 
         val list = repository.getRecords()
         userData.postValue(list)
-
-        Log.e(TAG, userData.toString())
     }
 
-    fun insertRecord(runningLogEntity: RunningLogEntity) {
-        Log.e(TAG, "insertRecode")
-        repository.insertRecord(runningLogEntity)
-        loadRecords()
-    }
 
 }

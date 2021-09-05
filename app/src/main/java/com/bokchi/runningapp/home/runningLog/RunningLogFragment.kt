@@ -27,6 +27,7 @@ class RunningLogFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,16 +43,19 @@ class RunningLogFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_running_log, container, false)
         runningLogViewModel = ViewModelProvider(activity as HomeActivity).get(RunningLogViewModel::class.java)
 
-
         binding.btn1.setOnClickListener {
-            val userEntity = RunningLogEntity(log = "asdf")
-            runningLogViewModel.insertRecord(userEntity)
+
+
+
         }
 
         binding.btn2.setOnClickListener {
             runningLogViewModel.loadRecords()
             runningLogViewModel.getRecordsObserver().observe(viewLifecycleOwner, Observer {
                 for ( i in it) {
+                    var count = 1
+                    Log.e(TAG, count.toString())
+                    count += 1
                     Log.e(TAG, i.log)
                 }
             })

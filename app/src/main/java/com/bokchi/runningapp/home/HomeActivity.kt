@@ -11,7 +11,6 @@ import androidx.core.app.NotificationCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.ActivityHomeBinding
 import com.bokchi.runningapp.network.repository.Repository
@@ -39,7 +38,6 @@ class HomeActivity : AppCompatActivity() {
         homeViewModel.weatherResponse.observe(this, Observer {
 
             binding.currentWeatherArea.text = it.body()?.weather?.get(0)?.main.toString()
-
 
         })
 

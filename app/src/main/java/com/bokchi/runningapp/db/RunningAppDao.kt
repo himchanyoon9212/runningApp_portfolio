@@ -14,4 +14,8 @@ interface RunningAppDao {
     @Insert
     fun insertRecord(userEntity: RunningLogEntity)
 
+
+    @Query("DELETE from runningLog")
+    fun deleteLogAll()
+
 }
