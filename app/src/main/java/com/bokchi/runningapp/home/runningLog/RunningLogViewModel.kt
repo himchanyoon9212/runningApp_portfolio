@@ -1,6 +1,7 @@
 package com.bokchi.runningapp.home.runningLog
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bokchi.runningapp.db.RoomRepository
@@ -13,21 +14,17 @@ class RunningLogViewModel @Inject constructor(private val repository: RoomReposi
 
     private val TAG = RunningLogViewModel::class.java.simpleName
 
-    lateinit var userData: MutableLiveData<List<RunningLogEntity>>
+    var userData: MutableLiveData<List<RunningLogEntity>> = MutableLiveData()
 
     init {
-        userData = MutableLiveData()
         loadRecords()
-    }
-
-    fun getRecordsObserver(): MutableLiveData<List<RunningLogEntity>> {
-        return userData
     }
 
     fun loadRecords(){
 
         val logList = repository.getRecords()
         userData.postValue(logList)
+
     }
 
     fun removeRecords(){

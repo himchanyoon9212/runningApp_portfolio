@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.db.RunningLogEntity
@@ -13,7 +14,7 @@ class RunningLogRVAdapter : RecyclerView.Adapter<RunningLogRVAdapter.ViewHolder>
 
     private val TAG = RunningLogRVAdapter::class.java.simpleName
 
-    var testList = ArrayList<RunningLogEntity>()
+    var logList = ArrayList<RunningLogEntity>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RunningLogRVAdapter.ViewHolder {
 
@@ -24,11 +25,11 @@ class RunningLogRVAdapter : RecyclerView.Adapter<RunningLogRVAdapter.ViewHolder>
     }
 
     override fun onBindViewHolder(holder: RunningLogRVAdapter.ViewHolder, position: Int) {
-        holder.bindItems(testList[position])
+        holder.bindItems(logList[position])
     }
 
     override fun getItemCount(): Int {
-        return testList.size
+        return logList.size
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -38,6 +39,15 @@ class RunningLogRVAdapter : RecyclerView.Adapter<RunningLogRVAdapter.ViewHolder>
         fun bindItems(runningLogEntity: RunningLogEntity) {
             logTitle.text = runningLogEntity.log
         }
+
+    }
+
+    fun setData(newLogList : ArrayList<RunningLogEntity>) {
+
+        val difUtil = RVDiffUtil(logList, newLogList)
+        val diffResults = DiffUtil.calculateDiff(difUtil)
+        logList = newLogList
+        diffResults.dispatchUpdatesTo(this)
 
     }
 

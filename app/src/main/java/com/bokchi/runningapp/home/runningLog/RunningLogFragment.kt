@@ -18,7 +18,6 @@ import com.bokchi.runningapp.home.HomeActivity
 
 class RunningLogFragment : Fragment() {
 
-
     private val TAG = RunningLogFragment::class.java.simpleName
 
     private lateinit var binding : FragmentRunningLogBinding
@@ -26,6 +25,8 @@ class RunningLogFragment : Fragment() {
     private lateinit var runningLogViewModel: RunningLogViewModel
 
     lateinit var runningLogRVAdapter: RunningLogRVAdapter
+    lateinit var logList : ArrayList<RunningLogEntity>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +42,7 @@ class RunningLogFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_running_log, container, false)
         runningLogViewModel = ViewModelProvider(activity as HomeActivity).get(RunningLogViewModel::class.java)
@@ -57,12 +59,9 @@ class RunningLogFragment : Fragment() {
         }
 
 
-
-//        binding.logRv.adapter = runningLogRVAdapter
-
         runningLogViewModel.userData.observe(viewLifecycleOwner, Observer {
 
-            runningLogRVAdapter.testList = it as ArrayList<RunningLogEntity>
+            runningLogRVAdapter.logList = it as ArrayList<RunningLogEntity>
             runningLogRVAdapter.notifyDataSetChanged()
 
 
@@ -90,9 +89,11 @@ class RunningLogFragment : Fragment() {
     private fun initRV(){
 
         binding.logRv.apply {
+
             layoutManager = LinearLayoutManager(context)
             runningLogRVAdapter = RunningLogRVAdapter()
             adapter = runningLogRVAdapter
+
         }
 
     }
