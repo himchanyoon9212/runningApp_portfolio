@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.FragmentRunningLogBinding
 import com.bokchi.runningapp.db.RunningLogEntity
 import com.bokchi.runningapp.home.HomeActivity
-import com.bokchi.runningapp.home.HomeViewModel
-import com.bokchi.runningapp.home.dialog.TimerDialogViewModel
 
 class RunningLogFragment : Fragment() {
 
@@ -24,6 +24,8 @@ class RunningLogFragment : Fragment() {
     private lateinit var binding : FragmentRunningLogBinding
 
     private lateinit var runningLogViewModel: RunningLogViewModel
+
+    lateinit var runningLogRVAdapter: RunningLogRVAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,23 +45,31 @@ class RunningLogFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_running_log, container, false)
         runningLogViewModel = ViewModelProvider(activity as HomeActivity).get(RunningLogViewModel::class.java)
 
+        // init Data load
+        runningLogViewModel.loadRecords()
+
         binding.btn1.setOnClickListener {
             runningLogViewModel.removeRecords()
         }
 
         binding.btn2.setOnClickListener {
             runningLogViewModel.loadRecords()
-            runningLogViewModel.getRecordsObserver().observe(viewLifecycleOwner, Observer {
-                for ( i in it) {
-                    var count = 1
-                    Log.e(TAG, "count : " + count.toString())
-                    count += 1
-                    Log.e(TAG, i.log)
-                }
-            })
         }
 
 
+
+//        binding.logRv.adapter = runningLogRVAdapter
+
+        runningLogViewModel.userData.observe(viewLifecycleOwner, Observer {
+
+            runningLogRVAdapter.testList = it as ArrayList<RunningLogEntity>
+            runningLogRVAdapter.notifyDataSetChanged()
+
+
+        })
+
+        initBottomTap()
+        initRV()
 
         return binding.root
     }
@@ -69,8 +79,21 @@ class RunningLogFragment : Fragment() {
 
     }
 
-    private fun initVM(){
+    private fun initBottomTap(){
 
+        binding.bottomLayout.mainBottomTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_runningLogFragment_to_runningActionFragment)
+        }
+
+    }
+
+    private fun initRV(){
+
+        binding.logRv.apply {
+            layoutManager = LinearLayoutManager(context)
+            runningLogRVAdapter = RunningLogRVAdapter()
+            adapter = runningLogRVAdapter
+        }
 
     }
 

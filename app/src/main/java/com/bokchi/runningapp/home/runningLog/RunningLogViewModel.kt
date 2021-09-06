@@ -26,8 +26,8 @@ class RunningLogViewModel @Inject constructor(private val repository: RoomReposi
 
     fun loadRecords(){
 
-        val list = repository.getRecords()
-        userData.postValue(list)
+        val logList = repository.getRecords()
+        userData.postValue(logList)
     }
 
     fun removeRecords(){

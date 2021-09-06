@@ -82,7 +82,6 @@ class RunningActionFragment : Fragment() {
             it.findNavController().navigate(R.id.action_runningActionFragment_to_runningLogFragment)
         }
 
-
     }
 
     private fun dialog(category : String){
