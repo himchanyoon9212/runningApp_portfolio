@@ -1,5 +1,6 @@
 package com.bokchi.runningapp.home.runningAction
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -16,6 +17,9 @@ import com.bokchi.runningapp.databinding.FragmentRunningActionBinding
 import com.bokchi.runningapp.home.HomeActivity
 import com.bokchi.runningapp.home.HomeViewModel
 import com.bokchi.runningapp.home.dialog.TimerDialogFragment
+import com.bokchi.runningapp.home.dialog.TimerNotification
+import com.bokchi.runningapp.home.foregroundService.TimerService
+import com.bokchi.runningapp.utils.Constants
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_RUN
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_STOP
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_TEMP_STOP
@@ -59,7 +63,13 @@ class RunningActionFragment : Fragment() {
         }
 
         homeViewModel.timeCounter.observe(viewLifecycleOwner, Observer {
-            binding.timeCounterShowArea.text = homeViewModel.timeCounter.value.toString()
+            val currentTimerText = homeViewModel.timeCounter.value.toString()
+            binding.timeCounterShowArea.text = currentTimerText
+            val intent = Intent(context, TimerService::class.java).apply {
+                action = "TIMER_RUN"
+                putExtra("currentTimerText", currentTimerText)
+            }
+            (activity as HomeActivity).startService(intent)
         })
 
 

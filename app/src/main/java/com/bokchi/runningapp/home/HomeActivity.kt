@@ -20,6 +20,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
+    private val TAG = HomeActivity::class.java.simpleName
+
     private lateinit var binding : ActivityHomeBinding
     private lateinit var homeViewModel : HomeViewModel
 
@@ -33,13 +35,32 @@ class HomeActivity : AppCompatActivity() {
         homeViewModel = ViewModelProvider(this, homeViewModelFactory).get(HomeViewModel::class.java)
         binding.homeViewModel = homeViewModel
 
+        getWeatherData()
+        checkForegroundServerStarted()
 
+    }
+
+    private fun getWeatherData(){
+
+        // get Weather Data
         homeViewModel.getWeatherData("seoul", weatherApiKey)
         homeViewModel.weatherResponse.observe(this, Observer {
 
             binding.currentWeatherArea.text = it.body()?.weather?.get(0)?.main.toString()
 
         })
+
+    }
+
+
+    private fun checkForegroundServerStarted(){
+
+        // 현재 foreground 데이터를 받아와서, timer 새롭게 시작
+//        if(intent.hasExtra("time")){
+//
+//            homeViewModel.startTimer()
+//
+//        }
 
     }
 

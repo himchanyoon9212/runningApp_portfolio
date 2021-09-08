@@ -1,6 +1,5 @@
 package com.bokchi.runningapp.home
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,7 +8,6 @@ import com.bokchi.runningapp.network.repository.Repository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class HomeViewModel(private val repository: Repository) : ViewModel(){

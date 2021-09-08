@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.FragmentTimerDialogBinding
@@ -78,20 +79,20 @@ class TimerDialogFragment : DialogFragment() {
             dismiss()
         }
 
-        homeViewModel = ViewModelProvider(activity as HomeActivity)[HomeViewModel::class.java]
-
         return binding.root
 
     }
 
     private fun timerForegroundServiceHandler(timerType : String){
 
-        val intent = Intent(context, TimerService::class.java)
-        intent.action = timerType
+        val intent = Intent(context, TimerService::class.java).apply {
+            action = timerType
+            putExtra("currentTimerText", "start")
+        }
         (activity as HomeActivity).startService(intent)
 
-
     }
+
 
 
 }
