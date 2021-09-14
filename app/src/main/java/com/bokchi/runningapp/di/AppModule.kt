@@ -2,6 +2,7 @@ package com.bokchi.runningapp.di
 
 import android.app.Application
 import com.bokchi.runningapp.db.AppDatabase
+import com.bokchi.runningapp.db.githubDB.GithubDao
 import com.bokchi.runningapp.db.runnginLogDB.RunningAppDao
 import dagger.Module
 import dagger.Provides
@@ -26,4 +27,13 @@ object APPModule {
     fun getDao(appDB: AppDatabase): RunningAppDao {
         return appDB.getDAO()
     }
+
+    @Singleton
+    @Provides
+    fun getGithubDao(appDB: AppDatabase) : GithubDao{
+        return appDB.getGithubDAO()
+    }
+
+
+
 }
