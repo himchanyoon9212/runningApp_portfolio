@@ -1,11 +1,15 @@
 package com.bokchi.runningapp.home.foregroundService
 
 import android.content.Intent
+import android.os.Handler
 import android.os.IBinder
+import android.util.Log
 import androidx.lifecycle.LifecycleService
 import com.bokchi.runningapp.home.dialog.TimerNotification
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_NOTIFICATION_ID
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_RUN
+import kotlinx.coroutines.delay
+import kotlin.concurrent.timer
 
 class TimerService : LifecycleService() {
 
@@ -39,8 +43,17 @@ class TimerService : LifecycleService() {
 
     private fun startForegroundService(time : String){
 
-        val notification = TimerNotification.createNotification(this, time)
-        startForeground(TIMER_NOTIFICATION_ID, notification)
+        var count = 1
+        // Counting
+        timer(period = 1000, initialDelay = 1000){
+
+            count++
+            val notification = TimerNotification.createNotification(application, count.toString())
+            startForeground(TIMER_NOTIFICATION_ID, notification)
+
+        }
+
+
 
     }
 

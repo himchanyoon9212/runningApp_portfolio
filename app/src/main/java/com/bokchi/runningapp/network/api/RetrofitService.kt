@@ -7,12 +7,6 @@ import retrofit2.http.Query
 
 interface RetrofitService {
 
-//    @GET("weather")
-//    suspend fun getWeatherData(
-//        @Query("q") query: String,
-//        @Query("appid") query2: String
-//    ) : WeatherList
-
     @GET("weather")
     suspend fun getWeatherData(
         @Query("q") query: String,

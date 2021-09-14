@@ -52,7 +52,11 @@ class TimerDialogFragment : DialogFragment() {
             when (arguments?.getString("TIMER_TYPE")) {
                 TIMER_RUN -> {
                     homeViewModel.startTimer()
-                    timerForegroundServiceHandler(TIMER_RUN)
+                    // Foreground가 떠 있으면 Foregournd 띄우지 않음
+                    if(homeViewModel.timeCounter.value == 1) {
+                        timerForegroundServiceHandler(TIMER_RUN)
+                    }
+
                 }
                 TIMER_TEMP_STOP -> {
 

@@ -16,8 +16,6 @@ class Constants {
         const val TIMER_CHANNEL_ID = "timer_channel"
         const val TIMER_NOTIFICATION_ID = 1
 
-
-
     }
 
 

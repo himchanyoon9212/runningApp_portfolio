@@ -1,5 +1,6 @@
 package com.bokchi.runningapp.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -49,6 +50,7 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
             timerRoutine = viewModelScope.launch {
 
                 while (true) {
+
                     startNumber += 1
                     timeCounter.value = startNumber
                     delay(1000L)

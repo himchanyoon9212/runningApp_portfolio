@@ -56,11 +56,13 @@ class HomeActivity : AppCompatActivity() {
     private fun checkForegroundServerStarted(){
 
         // 현재 foreground 데이터를 받아와서, timer 새롭게 시작
-//        if(intent.hasExtra("time")){
-//
-//            homeViewModel.startTimer()
-//
-//        }
+        if(intent.hasExtra("time")){
+
+            Log.e(TAG, intent.getStringExtra("time").toString())
+            homeViewModel.timeCounter.value = intent.getStringExtra("time")?.toInt()
+            homeViewModel.startTimer()
+
+        }
 
     }
 

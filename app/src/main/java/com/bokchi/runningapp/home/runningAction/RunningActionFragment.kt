@@ -2,12 +2,10 @@ package com.bokchi.runningapp.home.runningAction
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,13 +15,10 @@ import com.bokchi.runningapp.databinding.FragmentRunningActionBinding
 import com.bokchi.runningapp.home.HomeActivity
 import com.bokchi.runningapp.home.HomeViewModel
 import com.bokchi.runningapp.home.dialog.TimerDialogFragment
-import com.bokchi.runningapp.home.dialog.TimerNotification
 import com.bokchi.runningapp.home.foregroundService.TimerService
-import com.bokchi.runningapp.utils.Constants
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_RUN
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_STOP
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_TEMP_STOP
-
 
 class RunningActionFragment : Fragment() {
 
@@ -63,15 +58,12 @@ class RunningActionFragment : Fragment() {
         }
 
         homeViewModel.timeCounter.observe(viewLifecycleOwner, Observer {
+
             val currentTimerText = homeViewModel.timeCounter.value.toString()
             binding.timeCounterShowArea.text = currentTimerText
-            val intent = Intent(context, TimerService::class.java).apply {
-                action = "TIMER_RUN"
-                putExtra("currentTimerText", currentTimerText)
-            }
-            (activity as HomeActivity).startService(intent)
-        })
 
+
+        })
 
         initBottomTap()
 
@@ -81,7 +73,7 @@ class RunningActionFragment : Fragment() {
 
     override fun onPause() {
         super.onPause()
-        // 기록 남겨주기
+
 
     }
 
