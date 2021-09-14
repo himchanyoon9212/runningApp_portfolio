@@ -1,7 +1,7 @@
 package com.bokchi.runningapp.home.runningLog
 
 import androidx.recyclerview.widget.DiffUtil
-import com.bokchi.runningapp.db.RunningLogEntity
+import com.bokchi.runningapp.db.runnginLogDB.RunningLogEntity
 
 class RVDiffUtil(
     private val oldList : List<RunningLogEntity>,

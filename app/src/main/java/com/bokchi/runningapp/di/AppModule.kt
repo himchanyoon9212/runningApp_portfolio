@@ -2,7 +2,7 @@ package com.bokchi.runningapp.di
 
 import android.app.Application
 import com.bokchi.runningapp.db.AppDatabase
-import com.bokchi.runningapp.db.RunningAppDao
+import com.bokchi.runningapp.db.runnginLogDB.RunningAppDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object APPModule {
-
 
     @Singleton
     @Provides

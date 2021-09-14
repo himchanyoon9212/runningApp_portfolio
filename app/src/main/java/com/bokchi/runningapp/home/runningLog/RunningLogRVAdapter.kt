@@ -1,6 +1,5 @@
 package com.bokchi.runningapp.home.runningLog
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bokchi.runningapp.R
-import com.bokchi.runningapp.db.RunningLogEntity
+import com.bokchi.runningapp.db.runnginLogDB.RunningLogEntity
 
 class RunningLogRVAdapter : RecyclerView.Adapter<RunningLogRVAdapter.ViewHolder>() {
 

@@ -8,15 +8,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/purple_200"
         tools:context=".home.runningLog.RunningLogFragment">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/logRv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="120dp"/>
-
+            android:layout_marginBottom="140dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,21 +23,15 @@
             app:layout_constraintBottom_toBottomOf="parent">
 
             <Button
-                android:id="@+id/btn1"
+                android:id="@+id/removeBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Remove All"
+                android:textColor="@color/white"
                 android:layout_weight="1"
+                android:background="@color/black"
+                android:layout_margin="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/btn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Show Data"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </LinearLayout>

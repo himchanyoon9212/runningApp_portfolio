@@ -1,9 +1,8 @@
 package com.bokchi.runningapp.home.dialog
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.bokchi.runningapp.db.RoomRepository
-import com.bokchi.runningapp.db.RunningLogEntity
+import com.bokchi.runningapp.db.runnginLogDB.RoomRepository
+import com.bokchi.runningapp.db.runnginLogDB.RunningLogEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

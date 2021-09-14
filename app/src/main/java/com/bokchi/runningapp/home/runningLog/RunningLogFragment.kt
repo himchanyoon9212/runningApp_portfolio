@@ -1,7 +1,6 @@
 package com.bokchi.runningapp.home.runningLog
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +12,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.FragmentRunningLogBinding
-import com.bokchi.runningapp.db.RunningLogEntity
+import com.bokchi.runningapp.db.runnginLogDB.RunningLogEntity
 import com.bokchi.runningapp.home.HomeActivity
 
 class RunningLogFragment : Fragment() {
@@ -50,14 +49,9 @@ class RunningLogFragment : Fragment() {
         // init Data load
         runningLogViewModel.loadRecords()
 
-        binding.btn1.setOnClickListener {
+        binding.removeBtn.setOnClickListener {
             runningLogViewModel.removeRecords()
         }
-
-        binding.btn2.setOnClickListener {
-            runningLogViewModel.loadRecords()
-        }
-
 
         runningLogViewModel.userData.observe(viewLifecycleOwner, Observer {
 

@@ -1,4 +1,4 @@
-package com.bokchi.runningapp.db
+package com.bokchi.runningapp.db.runnginLogDB
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
