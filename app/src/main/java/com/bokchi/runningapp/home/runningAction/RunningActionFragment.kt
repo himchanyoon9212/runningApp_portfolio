@@ -84,6 +84,10 @@ class RunningActionFragment : Fragment() {
             it.findNavController().navigate(R.id.action_runningActionFragment_to_runningLogFragment)
         }
 
+        binding.bottomLayout.githubBottomTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_runningActionFragment_to_runningGithubFragment)
+        }
+
     }
 
     private fun dialog(category : String){

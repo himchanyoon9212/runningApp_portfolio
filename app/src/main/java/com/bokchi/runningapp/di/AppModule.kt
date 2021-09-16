@@ -34,6 +34,4 @@ object APPModule {
         return appDB.getGithubDAO()
     }
 
-
-
 }

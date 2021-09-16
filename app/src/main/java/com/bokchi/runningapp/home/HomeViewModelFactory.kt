@@ -2,7 +2,7 @@ package com.bokchi.runningapp.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bokchi.runningapp.network.repository.Repository
+import com.bokchi.runningapp.network.weather.weather.repository.Repository
 
 class HomeViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {

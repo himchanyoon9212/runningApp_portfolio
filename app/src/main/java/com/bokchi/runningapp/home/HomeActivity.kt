@@ -1,19 +1,14 @@
 package com.bokchi.runningapp.home
 
-import android.app.PendingIntent
-import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
-import androidx.core.app.NotificationCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.ActivityHomeBinding
-import com.bokchi.runningapp.network.repository.Repository
+import com.bokchi.runningapp.network.weather.weather.repository.Repository
 import com.bokchi.runningapp.utils.Constants.Companion.weatherApiKey
 import dagger.hilt.android.AndroidEntryPoint
 

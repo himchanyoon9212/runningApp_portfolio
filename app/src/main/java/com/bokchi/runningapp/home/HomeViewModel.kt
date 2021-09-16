@@ -1,11 +1,10 @@
 package com.bokchi.runningapp.home
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.bokchi.runningapp.network.model.WeatherList
-import com.bokchi.runningapp.network.repository.Repository
+import com.bokchi.runningapp.network.weather.weather.model.WeatherList
+import com.bokchi.runningapp.network.weather.weather.repository.Repository
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

@@ -5,7 +5,8 @@ class Constants {
     companion object {
 
         const val weatherApiKey = "437efd50dc7fdfdc2010de281414e0e8"
-        const val BASE_URL = "https://api.openweathermap.org/data/2.5/"
+        const val BASE_WEATHER_URL = "https://api.openweathermap.org/data/2.5/"
+        const val BASE_GITHUB_URL = "https://api.github.com/search/"
         lateinit var uid : String
 
         const val TIMER_RUN = "TIMER_RUN"

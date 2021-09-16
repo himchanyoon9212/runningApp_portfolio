@@ -1,6 +1,6 @@
-package com.bokchi.runningapp.network.api
+package com.bokchi.runningapp.network.weather.weather.api
 
-import com.bokchi.runningapp.network.model.WeatherList
+import com.bokchi.runningapp.network.weather.weather.model.WeatherList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

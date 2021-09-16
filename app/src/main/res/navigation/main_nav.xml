@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_runningActionFragment_to_runningLogFragment"
             app:destination="@id/runningLogFragment" />
+        <action
+            android:id="@+id/action_runningActionFragment_to_runningGithubFragment"
+            app:destination="@id/runningGithubFragment" />
     </fragment>
     <fragment
         android:id="@+id/runningLogFragment"
@@ -22,5 +25,20 @@
         <action
             android:id="@+id/action_runningLogFragment_to_runningActionFragment"
             app:destination="@id/runningActionFragment" />
+        <action
+            android:id="@+id/action_runningLogFragment_to_runningGithubFragment"
+            app:destination="@id/runningGithubFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/runningGithubFragment"
+        android:name="com.bokchi.runningapp.home.runningGithub.RunningGithubFragment"
+        android:label="fragment_running_github"
+        tools:layout="@layout/fragment_running_github" >
+        <action
+            android:id="@+id/action_runningGithubFragment_to_runningActionFragment"
+            app:destination="@id/runningActionFragment" />
+        <action
+            android:id="@+id/action_runningGithubFragment_to_runningLogFragment"
+            app:destination="@id/runningLogFragment" />
     </fragment>
 </navigation>
