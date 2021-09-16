@@ -26,7 +26,6 @@ class RunningLogFragment : Fragment() {
     lateinit var runningLogRVAdapter: RunningLogRVAdapter
     lateinit var logList : ArrayList<RunningLogEntity>
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
