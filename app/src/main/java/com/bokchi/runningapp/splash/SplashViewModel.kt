@@ -17,7 +17,6 @@ class SplashViewModel : ViewModel() {
 
     fun getUid() : String? {
 
-
         val uid = Firebase.auth.currentUser?.uid
         return uid
 

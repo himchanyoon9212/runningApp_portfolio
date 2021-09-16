@@ -78,6 +78,11 @@ class RunningLogFragment : Fragment() {
             it.findNavController().navigate(R.id.action_runningLogFragment_to_runningActionFragment)
         }
 
+
+        binding.bottomLayout.githubBottomTap.setOnClickListener {
+            it.findNavController().navigate(R.id.action_runningLogFragment_to_runningGithubFragment)
+        }
+
     }
 
     private fun initRV(){

@@ -33,19 +33,27 @@ class IntroActivity : AppCompatActivity() {
             introViewModel.email = binding.createuserEmailArea.text.toString()
             introViewModel.password = binding.createUserPasswordArea.text.toString()
 
-            introViewModel.createUser(
-                introViewModel.email,
-                introViewModel.password
-            )
+            if(introViewModel.email == "" || introViewModel.password == "") {
 
-            binding.createuserEmailArea.setText("")
-            binding.createUserPasswordArea.setText("")
+                Toast.makeText(this@IntroActivity, "값을 입력해주세요", Toast.LENGTH_SHORT).show()
+
+            } else {
+
+                introViewModel.createUser(
+                    introViewModel.email,
+                    introViewModel.password
+                )
+
+                binding.createuserEmailArea.setText("")
+                binding.createUserPasswordArea.setText("")
+
+            }
+
+
 
         }
 
         introViewModel.result.observe(this, Observer {
-
-            Log.d(TAG, it.toString())
 
             val result = it.toString()
 
