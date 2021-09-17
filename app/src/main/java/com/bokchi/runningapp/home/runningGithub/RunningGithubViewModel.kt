@@ -17,8 +17,6 @@ class RunningGithubViewModel(private val repository: GithubRepository) : ViewMod
 
     fun getGithubData(){
 
-        Log.e(TAG, "getGithubData")
-
         viewModelScope.launch {
 
             val response = repository.getGithubData("running")

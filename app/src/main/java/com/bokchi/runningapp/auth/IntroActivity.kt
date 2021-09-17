@@ -49,8 +49,6 @@ class IntroActivity : AppCompatActivity() {
 
             }
 
-
-
         }
 
         introViewModel.result.observe(this, Observer {

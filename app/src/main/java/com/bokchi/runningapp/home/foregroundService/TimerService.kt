@@ -6,14 +6,22 @@ import android.os.IBinder
 import android.util.Log
 import androidx.lifecycle.LifecycleService
 import com.bokchi.runningapp.home.dialog.TimerNotification
+import com.bokchi.runningapp.utils.Constants
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_NOTIFICATION_ID
+import com.bokchi.runningapp.utils.Constants.Companion.TIMER_OFF_FLAG
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_RUN
+import com.bokchi.runningapp.utils.Constants.Companion.TIMER_TEMP_STOP
 import kotlinx.coroutines.delay
+import java.lang.Exception
+import java.sql.Time
+import java.util.*
 import kotlin.concurrent.timer
 
 class TimerService : LifecycleService() {
 
     private val TAG = TimerService::class.java.simpleName
+    private var t_timer = Timer()
+    private var int_count = 1
 
     override fun onCreate() {
         super.onCreate()
@@ -24,7 +32,12 @@ class TimerService : LifecycleService() {
 
         when(intent?.action){
             TIMER_RUN ->{
-                intent.getStringExtra("currentTimerText")?.let { startForegroundService(it) }
+                intent.getStringExtra("currentTimerText")?.let {
+                    startForegroundService(it)
+                }
+            }
+            TIMER_TEMP_STOP->{
+                tempStopForegroundService()
             }
             else ->{
                 stopForegroundService()
@@ -43,19 +56,49 @@ class TimerService : LifecycleService() {
 
     private fun startForegroundService(time : String){
 
-        var count = 1
-        // Counting
-        timer(period = 1000, initialDelay = 1000){
+        TIMER_OFF_FLAG = "on"
+        // schedule
 
-            count++
-            val notification = TimerNotification.createNotification(application, count.toString())
-            startForeground(TIMER_NOTIFICATION_ID, notification)
+        try {
+            t_timer.schedule(object : TimerTask(){
+                override fun run(){
+
+                    //카운트 값 증가
+                    int_count ++
+
+                    val notification = TimerNotification.createNotification(application, int_count.toString(), TIMER_OFF_FLAG)
+                    startForeground(TIMER_NOTIFICATION_ID, notification)
+                }
+            },1000, 1000)
+        } catch (e : Exception) {
+            t_timer = Timer()
+            t_timer.schedule(object : TimerTask(){
+                override fun run(){
+
+                    //카운트 값 증가
+                    int_count ++
+
+                    val notification = TimerNotification.createNotification(application, int_count.toString(), TIMER_OFF_FLAG)
+                    startForeground(TIMER_NOTIFICATION_ID, notification)
+                }
+            },1000, 1000)
 
         }
+
+
+
 
     }
 
     private fun tempStopForegroundService(){
+
+        t_timer.cancel()
+
+        TIMER_OFF_FLAG = "off"
+
+        val notification = TimerNotification.createNotification(application, int_count.toString(), TIMER_OFF_FLAG)
+        startForeground(TIMER_NOTIFICATION_ID, notification)
+
 
     }
 
@@ -65,6 +108,8 @@ class TimerService : LifecycleService() {
         stopSelf()
 
     }
+
+
 
 
 }

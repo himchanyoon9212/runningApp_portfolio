@@ -17,13 +17,15 @@ object TimerNotification {
 
     private val TAG = TimerNotification::class.java.simpleName
 
-    fun createNotification(context: Context, time : String): Notification {
+    fun createNotification(context: Context, time : String, on_off_flag : String): Notification {
 
         // 알림 클릭시 HomeActivity 로 이동
         val notificationIntent = Intent(context, HomeActivity::class.java)
 
         //notificationIntent에 현재 Count 전달
         notificationIntent.putExtra("time", time)
+        notificationIntent.putExtra("onOff", on_off_flag)
+
         notificationIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
         val pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT)

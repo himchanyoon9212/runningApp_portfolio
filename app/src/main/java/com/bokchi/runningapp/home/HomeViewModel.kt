@@ -36,7 +36,7 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
 
     }
 
-    fun startTimer() : String{
+    fun startTimer() {
 
         var startNumber = 0
 
@@ -57,12 +57,8 @@ class HomeViewModel(private val repository: Repository) : ViewModel(){
             }
 
             timerCoroutineFlag = false
-            return "실행되었습니다."
 
         }
-
-        return "이미 실행되어 있습니다."
-
 
     }
 

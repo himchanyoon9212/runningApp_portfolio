@@ -34,18 +34,17 @@ class IntroViewModel : ViewModel(){
 
             auth.createUserWithEmailAndPassword(email, pwd)
                 .addOnCompleteListener {
-                    Log.d(TAG, "success : $it")
+
                     result.value = "success"
                     Constants.uid = auth.currentUser!!.uid
                 }
                 .addOnFailureListener {
-                    Log.d(TAG, "fail : $it")
+
                     result.value = "fail"
                 }
 
         } catch (e : Exception) {
 
-            Log.e(TAG, e.toString())
             result.value = "exception"
 
         }

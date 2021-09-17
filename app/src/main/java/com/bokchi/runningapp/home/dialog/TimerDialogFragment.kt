@@ -2,6 +2,7 @@ package com.bokchi.runningapp.home.dialog
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import com.bokchi.runningapp.db.runnginLogDB.RunningLogEntity
 import com.bokchi.runningapp.home.HomeActivity
 import com.bokchi.runningapp.home.HomeViewModel
 import com.bokchi.runningapp.home.foregroundService.TimerService
+import com.bokchi.runningapp.utils.Constants.Companion.TIMER_OFF_FLAG
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_RUN
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_STOP
 import com.bokchi.runningapp.utils.Constants.Companion.TIMER_TEMP_STOP
@@ -49,9 +51,10 @@ class TimerDialogFragment : DialogFragment() {
 
             when (arguments?.getString("TIMER_TYPE")) {
                 TIMER_RUN -> {
+
                     homeViewModel.startTimer()
-                    // Foreground가 떠 있으면 Foregournd 띄우지 않음
-                    if(homeViewModel.timeCounter.value == 1) {
+
+                    if(homeViewModel.timeCounter.value == 1 || TIMER_OFF_FLAG == "off") {
                         timerForegroundServiceHandler(TIMER_RUN)
                     }
 
@@ -89,7 +92,7 @@ class TimerDialogFragment : DialogFragment() {
 
         val intent = Intent(context, TimerService::class.java).apply {
             action = timerType
-            putExtra("currentTimerText", "start")
+            putExtra("currentTimerText", homeViewModel.timeCounter.value.toString())
         }
         (activity as HomeActivity).startService(intent)
 

@@ -13,9 +13,10 @@ class Constants {
         const val TIMER_TEMP_STOP = "TIMER_TEMP_STOP"
         const val TIMER_STOP = "TIMER_STOP"
 
-
         const val TIMER_CHANNEL_ID = "timer_channel"
         const val TIMER_NOTIFICATION_ID = 1
+
+        var TIMER_OFF_FLAG = "on"
 
     }
 

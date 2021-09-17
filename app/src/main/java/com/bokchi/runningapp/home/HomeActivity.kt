@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bokchi.runningapp.R
 import com.bokchi.runningapp.databinding.ActivityHomeBinding
 import com.bokchi.runningapp.network.weather.weather.repository.Repository
+import com.bokchi.runningapp.utils.Constants.Companion.TIMER_OFF_FLAG
 import com.bokchi.runningapp.utils.Constants.Companion.weatherApiKey
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,12 +51,23 @@ class HomeActivity : AppCompatActivity() {
 
     private fun checkForegroundServerStarted(){
 
-        // 현재 foreground 데이터를 받아와서, timer 새롭게 시작
+        // 현재 foreground 데이터를 받아와서, main timer 새롭게 시작
         if(intent.hasExtra("time")){
 
-            Log.e(TAG, intent.getStringExtra("time").toString())
-            homeViewModel.timeCounter.value = intent.getStringExtra("time")?.toInt()
-            homeViewModel.startTimer()
+            val onOffValue = intent.getStringExtra("onOff").toString()
+
+            if(onOffValue == "on") {
+
+                homeViewModel.timeCounter.value = intent.getStringExtra("time")?.toInt()
+                homeViewModel.startTimer()
+
+            } else {
+
+                homeViewModel.timeCounter.value = intent.getStringExtra("time")?.toInt()
+
+            }
+
+
 
         }
 
