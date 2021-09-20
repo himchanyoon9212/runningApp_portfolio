@@ -3,8 +3,22 @@
 
 사용기술
 
-AAC
-Room
-Dagger Hilt
-Foreground Service
-MVVM
+- AAC
+
+- MVVM
+
+- Room
+
+- DI(Dagger Hilt)
+
+- Foreground Service
+
+- Retrofit
+
+- Coroutine
+
+- Firebase Auth
+
+
+
+
