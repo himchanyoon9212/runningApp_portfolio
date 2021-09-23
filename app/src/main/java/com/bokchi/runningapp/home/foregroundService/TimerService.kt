@@ -85,9 +85,6 @@ class TimerService : LifecycleService() {
 
         }
 
-
-
-
     }
 
     private fun tempStopForegroundService(){
