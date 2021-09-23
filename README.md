@@ -41,7 +41,7 @@
   
   ![스크린샷 2021-09-23 오전 3 52 15](https://user-images.githubusercontent.com/55573050/134404269-1f7359e6-9571-4128-86e7-d4b1fa709c5e.png)
 
- **Room에서 한개의 table로만 예제들을 발전시켜 mutiple tables를 사용하였습니다.**
+ **Room에서 한개의 table로만 구현되어 있는 예제들을 발전시켜 mutiple tables를 사용하였습니다.**
  
  ![스크린샷 2021-09-23 오전 3 47 48](https://user-images.githubusercontent.com/55573050/134403699-902d6580-87ba-4cb0-af4c-144927c7a2df.png)
 
